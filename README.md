@@ -22,6 +22,7 @@ CREATE DATABASE goatwar;
 
 Dopodichè non so se devi fare anche il superuser di django.
 Nel caso ho fatto:
+
 python manage.py createsuperuser
 user: admin
 pass: admin
