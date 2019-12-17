@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block head %}
+	<title>{{ goat.name }}</title>
+{% endblock %}
+
+{% block body %}
+	<h1>{{ goat.name }}</h1>
+
+	{% if goat.image %}
+		<img src="{{ goat.image.url }}" atl="{{ goat.name }}" style="width:100%">
+	{% else %}
+		NO IMAGE
+	{% endif %}
+
+	<p>Name: {{ goat.name }}</p>
+	<p>Description: {{ goat.description }}</p>
+	<p>Score: {{ goat.score }}</p>
+	<p>Wins: {{ goat.wins }}/{{ goat.n_battles }}</p>
+	<p>Uploaded on: {{ goat.pub_date }}</p>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% comment %} Main page of GoatWar. {% endcomment %}
+
+{% block head %}
+	<title>GoatWar</title>
+
+	<script type="text/javascript"><!--
+		//Process User Choice.
+		function kitten(win, los) {
+			//Set cookies
+			if (navigator.cookieEnabled || typeof(navigator.cookieEnabled) != "undefined") {
+				document.cookie = "won=" + win;
+				document.cookie = "los=" + los;
+			}
+
+			//Redirect
+			document.location.href = document.location.href;
+		}
+	//--></script>
+{% endblock %}
+
+{% block body %}
+	<header><h1>GoatWar</h1></header>
+	<section>
+		<p>Welcome to GoatWar. Vote for the cutest goat.</p>
+		<div id=results>
+			{% if voted %}
+				WINNER: {{ winner.name }}
+				<a href="{% url 'backend:goat_detail' winner.id %}">
+					<img src="{{ winner.image.url }}" alt="{{ winner.name }}" style="width:10%">
+				</a>
+				LOSER: {{ loser.name }}
+				<a href="{% url 'backend:goat_detail' loser.id %}">
+					<img src="{{ loser.image.url }}" alt="{{ loser.name }}" style="width:10%">
+				</a>
+			{% endif %}
+		</div>
+		<div id=war>
+			<a href="Javascript: kitten({{ goat1.id }}, {{ goat2.id }})">
+				<img src="{{ goat1.image.url }}" alt="{{ goat1.name }}" style="width:30%" >
+			</a>
+			<a href="Javascript: kitten({{ goat2.id }}, {{ goat1.id }})">
+				<img src="{{ goat2.image.url }}" alt="{{ goat2.name }}" style="width:30%" >
+			</a>
+		</div>
+	</section>
+{% endblock %}
