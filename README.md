@@ -7,8 +7,11 @@ mysql -u root -p
 
 Solo nel caso non funzionasse il login (come nel mio caso) devi andare a vedere l'utente di default creato in installazione:
 cat /etc/mysql/debian.cnf
+
 Troverai le righe user e psw da usare per loggare.
+
 Una volta loggato:
+
 DROP USER 'root'@'localhost';
 CREATE USER 'root'@'localhost';
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' WITH GRANT OPTION;
